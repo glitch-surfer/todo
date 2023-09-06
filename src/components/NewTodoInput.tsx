@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { type NewTodoInputProps } from '../types';
+import { type Todo, type NewTodoInputProps } from '../types';
 
-export const NewTodoInput = ({ setTodosList, todosList }: NewTodoInputProps) => {
+export const NewTodoInput = ({ setTodosList }: NewTodoInputProps) => {
   const [description, setDescription] = useState<string>('');
 
   const newTodoHandler = () => {
-    setTodosList([...todosList, { description, completed: false }]);
+    setTodosList(
+      (todosList) => [...todosList, { description, completed: false, id: Date.now() }] as Todo[]
+    );
     setDescription('');
   };
 
