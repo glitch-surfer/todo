@@ -9,10 +9,9 @@ export const App = () => {
     <main className="min-h-screen flex flex-col justify-center items-center">
       <h1 className="text-3xl text-cyan-500 text-center">Todo</h1>
       <NewTodoInput
-        todosList={todosList}
         setTodosList={setTodosList}
       />
-      <TodoList todosList={todosList} />
+      <TodoList todosList={todosList} setTodosList={setTodosList} />
     </main>
   );
 };
