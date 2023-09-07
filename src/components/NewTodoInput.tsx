@@ -12,16 +12,18 @@ export const NewTodoInput = ({ setTodosList }: NewTodoInputProps) => {
   };
 
   return (
-    <div>
+    <div className="relative">
       <input
-        className="border rounded w-[10rem]"
+        className="border-b w-[20rem] sm:w-[30rem] border-cyan-500 bg-slate-50 p-2 placeholder:italic placeholder:text-gray-300 placeholder:text-center"
         type="text"
+        placeholder="What needs to be done?"
         value={description}
         onChange={(e) => {
           setDescription(e.target.value);
         }}
       />
       <button
+        className="absolute right-1 top-1 text-gray-400 bg-slate-50 p-1 hover:text-gray-600"
         onClick={() => {
           newTodoHandler();
         }}
