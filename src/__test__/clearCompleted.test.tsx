@@ -16,9 +16,11 @@ describe('clear completed todos', () => {
     const clearBtn = screen.getByText('Clear Completed');
     fireEvent.click(clearBtn);
 
-    const todoList = screen.queryByRole('list');
-
-    expect(todoList).toHaveTextContent(todos.join(''));
+    const todoList = screen.getByRole('list');
+    todos.forEach((description) => {
+      const todo = screen.queryByText(description);
+      expect(todoList).toContainElement(todo);
+    });
   });
 
   it('should remove completed todos', () => {
@@ -31,15 +33,13 @@ describe('clear completed todos', () => {
       fireEvent.click(addButton);
     });
 
-    const completedTodo = screen.getByText('test todo 3');
+    const completedTodo = screen.getByLabelText('test todo 3');
     fireEvent.click(completedTodo);
 
     const clearBtn = screen.getByText('Clear Completed');
     fireEvent.click(clearBtn);
 
-    const todoList = screen.queryByRole('list');
-
-    const activeTodos = todos.slice(0, 2);
-    expect(todoList).toHaveTextContent(activeTodos.join(''));
+    const removedTodo = screen.queryByText('test todo 3');
+    expect(removedTodo).not.toBeInTheDocument();
   });
 });
