@@ -19,7 +19,7 @@ export const App = () => {
           todosList={getTodoList(todosList, filter)}
           setTodosList={setTodosList}
         />
-        <Controls notCompletedTodos={notCompletedTodos} setTodosList={setTodosList} setFilter={setFilter} />
+        <Controls notCompletedTodos={notCompletedTodos} setTodosList={setTodosList} setFilter={setFilter} filter={filter} />
       </div>
     </main>
   );

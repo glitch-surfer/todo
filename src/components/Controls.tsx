@@ -1,13 +1,13 @@
 import { type FilterProps, type ControlsProps, type Filter } from '../types';
 
-const FilterViewControls = ({ setFilter }: FilterProps) => {
+const FilterViewControls = ({ setFilter, selectedFilter }: FilterProps) => {
   const filters: Filter[] = ['All', 'Active', 'Completed'];
   return (
     <div className="flex gap-2">
       {filters.map((filter) => (
         <button
           key={filter}
-          className="text-gray-400 hover:text-gray-600 text-sm"
+          className={`text-gray-400 hover:text-gray-600 px-1 text-sm ${selectedFilter === filter ? 'border rounded border-gray-400 hover:border-gray-600' : ''}`}
           onClick={() => {
             setFilter(filter);
           }}
@@ -19,7 +19,7 @@ const FilterViewControls = ({ setFilter }: FilterProps) => {
   );
 };
 
-export const Controls = ({ notCompletedTodos, setTodosList, setFilter }: ControlsProps) => {
+export const Controls = ({ notCompletedTodos, setTodosList, setFilter, filter }: ControlsProps) => {
   const clearCompletedTodosHandler = () => {
     setTodosList((prev) => prev.filter((todo) => !todo.completed));
     setFilter('All');
@@ -28,7 +28,7 @@ export const Controls = ({ notCompletedTodos, setTodosList, setFilter }: Control
   return (
     <div className="flex flex-wrap justify-between p-2 items-center">
       <p className="text-gray-400 text-sm">{notCompletedTodos.length} items left</p>
-      <FilterViewControls setFilter={setFilter} />
+      <FilterViewControls setFilter={setFilter} selectedFilter={filter} />
       <button
         className="text-gray-400 hover:text-gray-600 text-sm"
         onClick={clearCompletedTodosHandler}
