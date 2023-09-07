@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { TodoList } from './components/TodoList';
-import type { Todo } from './types';
+import type { Filter, Todo } from './types';
 import { NewTodoInput } from './components/NewTodoInput';
 import { Controls } from './components/Controls';
+import { getTodoList } from './components/util';
 
 export const App = () => {
   const [todosList, setTodosList] = useState<Todo[]>([]);
+  const [filter, setFilter] = useState<Filter>('All');
   const notCompletedTodos = todosList.filter((todo) => !todo.completed);
 
   return (
@@ -14,10 +16,10 @@ export const App = () => {
       <div className="flex flex-col bg-slate-50 shadow-md border border-cyan-500 text-cyan-800">
         <NewTodoInput setTodosList={setTodosList} />
         <TodoList
-          todosList={todosList}
+          todosList={getTodoList(todosList, filter)}
           setTodosList={setTodosList}
         />
-        <Controls notCompletedTodos={notCompletedTodos} setTodosList={setTodosList} />
+        <Controls notCompletedTodos={notCompletedTodos} setTodosList={setTodosList} setFilter={setFilter} />
       </div>
     </main>
   );

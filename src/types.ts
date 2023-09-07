@@ -25,4 +25,10 @@ export interface NewTodoInputProps {
 export interface ControlsProps {
   notCompletedTodos: Todo[]
   setTodosList: Dispatch<SetStateAction<Todo[]>>
+  setFilter: Dispatch<SetStateAction<Filter>>
+}
+export type Filter = 'All' | 'Active' | 'Completed';
+
+export interface FilterProps {
+  setFilter: Dispatch<SetStateAction<Filter>>
 }
