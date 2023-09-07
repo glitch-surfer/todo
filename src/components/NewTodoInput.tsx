@@ -15,7 +15,7 @@ export const NewTodoInput = ({ setTodosList, setFilter }: NewTodoInputProps) => 
   return (
     <div className="relative">
       <input
-        className="border-b w-[20rem] sm:w-[30rem] border-cyan-500 bg-slate-50 p-2 placeholder:italic placeholder:text-gray-300 placeholder:text-center"
+        className="border-b w-full border-cyan-500 bg-slate-50 p-2 placeholder:italic placeholder:text-gray-300 placeholder:text-center"
         type="text"
         placeholder="What needs to be done?"
         value={description}

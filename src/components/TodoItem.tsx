@@ -2,7 +2,7 @@ import type { TodoItemProps } from '../types';
 
 export const TodoItem = ({ description, completed, setTodosList, id }: TodoItemProps) => {
   return (
-    <li className="w-[20rem] sm:w-[30rem] border-b p-2 border-cyan-500 hover:bg-slate-100">
+    <li className="w-full border-b p-2 border-cyan-500 hover:bg-slate-100">
       <label
         className={`${
           completed ? 'line-through text-gray-400' : ''
