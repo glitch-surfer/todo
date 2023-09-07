@@ -11,10 +11,7 @@ export interface Todo {
   completed: boolean
 }
 
-export interface TodoItemProps {
-  id: number
-  description: string
-  completed: boolean
+export interface TodoItemProps extends Todo {
   setTodosList: Dispatch<SetStateAction<Todo[]>>
 }
 
