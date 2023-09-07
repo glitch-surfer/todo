@@ -22,6 +22,7 @@ const FilterViewControls = ({ setFilter }: FilterProps) => {
 export const Controls = ({ notCompletedTodos, setTodosList, setFilter }: ControlsProps) => {
   const clearCompletedTodosHandler = () => {
     setTodosList((prev) => prev.filter((todo) => !todo.completed));
+    setFilter('All');
   };
 
   return (

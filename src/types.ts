@@ -20,6 +20,7 @@ export interface TodoItemProps {
 
 export interface NewTodoInputProps {
   setTodosList: Dispatch<SetStateAction<Todo[]>>
+  setFilter: Dispatch<SetStateAction<Filter>>
 }
 
 export interface ControlsProps {

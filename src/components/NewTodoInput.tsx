@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { type Todo, type NewTodoInputProps } from '../types';
 
-export const NewTodoInput = ({ setTodosList }: NewTodoInputProps) => {
+export const NewTodoInput = ({ setTodosList, setFilter }: NewTodoInputProps) => {
   const [description, setDescription] = useState<string>('');
 
   const newTodoHandler = () => {
@@ -9,6 +9,7 @@ export const NewTodoInput = ({ setTodosList }: NewTodoInputProps) => {
       (todosList) => [...todosList, { description, completed: false, id: Date.now() }] as Todo[]
     );
     setDescription('');
+    setFilter('All');
   };
 
   return (
