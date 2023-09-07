@@ -21,3 +21,8 @@ export interface TodoItemProps {
 export interface NewTodoInputProps {
   setTodosList: Dispatch<SetStateAction<Todo[]>>
 }
+
+export interface ControlsProps {
+  notCompletedTodos: Todo[]
+  setTodosList: Dispatch<SetStateAction<Todo[]>>
+}

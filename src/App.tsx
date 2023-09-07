@@ -2,14 +2,11 @@ import { useState } from 'react';
 import { TodoList } from './components/TodoList';
 import type { Todo } from './types';
 import { NewTodoInput } from './components/NewTodoInput';
+import { Controls } from './components/Controls';
 
 export const App = () => {
   const [todosList, setTodosList] = useState<Todo[]>([]);
   const notCompletedTodos = todosList.filter((todo) => !todo.completed);
-
-  const clearCompletedTodosHandler = () => {
-    setTodosList((prev) => prev.filter((todo) => !todo.completed));
-  };
 
   return (
     <main className="min-h-screen flex flex-col justify-center items-center bg-slate-100">
@@ -20,15 +17,7 @@ export const App = () => {
           todosList={todosList}
           setTodosList={setTodosList}
         />
-        <div className="flex justify-between p-2 items-center">
-          <p className="text-gray-400 text-sm">{notCompletedTodos.length} items left</p>
-          <button
-            className="text-gray-400 hover:text-gray-600"
-            onClick={clearCompletedTodosHandler}
-          >
-            Clear Completed
-          </button>
-        </div>
+        <Controls notCompletedTodos={notCompletedTodos} setTodosList={setTodosList} />
       </div>
     </main>
   );
