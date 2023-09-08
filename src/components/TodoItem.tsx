@@ -39,15 +39,17 @@ export const TodoItem = ({ description, completed, setTodosList, id }: TodoItemP
         type="checkbox"
         checked={completed}
         onChange={completeTodoHandler}
+        disabled={editable}
       />
       <input
         type="text"
         className={`w-full bg-slate-50  p-2 pl-8 group-hover:bg-slate-100 ${
           completed ? 'line-through text-gray-400' : ''
-        } ${editable ? 'bg-cyan-50 group-hover:bg-cyan-50' : ''}`}
+        } ${editable ? 'bg-cyan-50 group-hover:bg-cyan-50' : ''} cursor-pointer`}
         value={description}
         onChange={editTodoHandler}
-        disabled={!editable}
+        readOnly={!editable}
+        onClick={editable ? undefined : completeTodoHandler}
       />
       <button
         className={`absolute right-1 top-1 text-gray-400 bg-slate-50 p-1 hover:text-gray-600 group-hover:bg-slate-100 ${
